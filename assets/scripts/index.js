@@ -1,5 +1,6 @@
 
 const request = require('request');
+const { randomNum } = require('../../utils/random_array');
 
 let arr = [];
 for (let i=0; i < 100; i++) {
@@ -14,7 +15,11 @@ setInterval(() => {
     let d = document.createElement('span');
     counter.appendChild(d);
     counter.innerHTML = ind;
-    
+
+    let currentPrice = randomNum();
+    let lastPrice = randomNum();
+
+    console.log(currentPrice, lastPrice);
 
     ind += 1;
     
@@ -25,7 +30,7 @@ setInterval(() => {
 
         body = JSON.parse(body);
         // console.log(body);
-        newPrice(body);
+        newPrice(currentPrice, lastPrice);
     })
 }, 3000);
 
@@ -34,26 +39,27 @@ let lastPrice;
 lastPrice = 100;
 
 
-function newPrice(data) {
-    currentPrice = data[data.length - 1].close;
+function newPrice(cur, last) {
+    // currentPrice = data[data.length - 1].close;
     
     let history = document.getElementById("priceHistory");
-    if (lastPrice < currentPrice) 
+    if (last < cur) 
     {
         var newEltext = "▲";
         var wrap = document.createElement('span');
-                        wrap.setAttribute = ("class", "up");
+        wrap.className += ("up");
+        
     }
     else 
     {
         var newEltext = "▼";
         var wrap = document.createElement('span');
-        wrap.class = "down";
+        wrap.className += ("down");
     }
-    history.appendChild(wrap);
     let textNode = document.createTextNode(newEltext);
-    history.appendChild(textNode);
+    wrap.appendChild(textNode)    
+    history.appendChild(wrap);
+    // history.appendChild(textNode);
     // console.log(currentPrice);
-    document.getElementById('price').innerHTML = currentPrice;
-
+    document.getElementById('price').innerHTML = (cur, last);
 }

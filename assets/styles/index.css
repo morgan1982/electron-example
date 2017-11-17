@@ -11,8 +11,17 @@ body {
     width: 100px;
     background-color: aqua;
 }
-.up-down {
+.up {
     color: mediumspringgreen;
+}
+.down {
+    color: red;
+}
+.up-down {
+    display: block;
+    width: 400;
+    height: 200;
+    
 }
 
 h2 {
