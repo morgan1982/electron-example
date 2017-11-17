@@ -2,8 +2,22 @@ body {
     -webkit-app-region: drag;
     background: black;
     color: white;
+    font-family: 'Ubuntu Mono';
+}
+#line {
+    margin: 5 5;
+    display: block;
+    height: 2px;
+    width: 100px;
+    background-color: aqua;
+}
+.up-down {
+    color: mediumspringgreen;
 }
 
+h2 {
+    text-align: center;
+}
 #title-bar {
     -webkit-app-region: drag;
     height: 24px;
